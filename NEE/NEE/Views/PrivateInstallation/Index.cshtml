@@ -1,0 +1,161 @@
+﻿@model PrivateInstallationViewModel
+
+@{
+    ViewBag.Title = "PrivateInstallation page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Meine private Installation eingeben</h1>
+</div>
+<div class="top-navigation-menu">
+    <!--<p class="top-navigation-menu">Home / Private Installation</p>-->
+    <a href="/Home/Index">Home > PrivateInstallation</a>
+</div>
+
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'localisation')" id="defaultOpen">Loge</button>
+        <button class="tablinks" onclick="openTab(event, 'type')">Art der Installation</button>
+        <button class="tablinks" onclick="openTab(event, 'orientation')">Ausrichtung</button>
+        <button class="tablinks" onclick="openTab(event, 'surface')">Oberfläche</button>
+    </div>
+</body>
+
+<form asp-controller="PrivateInstallation" asp-action="Index" method="post" id="createPrivateInstallation">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div id="localisation" class="tabcontent">
+        <div class="col">
+
+
+            <div class="row">
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Strasse" class="control-label" style="margin-right : 30px"></label>
+                    <input asp-for="Strasse" class="form-control" />
+                    <span asp-validation-for="Strasse" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="No" class="control-label"></label>
+                    <input asp-for="No" class="form-control" />
+                    <span asp-validation-for="No" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Postleitzahl" class="control-label"></label>
+                    <input asp-for="Postleitzahl" class="form-control" />
+                    <span asp-validation-for="Postleitzahl" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Stadt" class="control-label"></label>
+                    <input asp-for="Stadt" class="form-control" />
+                    <span asp-validation-for="Stadt" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="type" class="tabcontent" style="display : none">
+        <div class="col">
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="RenewableEnergy" class="control-label">Erneurbaren Energien : </label>
+                <div class="form-control-options">
+
+                    Windmachine
+                    @Html.RadioButtonFor(model => model.RenewableEnergy, "Wind")
+                    Photovoltaik
+                    @Html.RadioButtonFor(model => model.RenewableEnergy, "Solar")
+                    Bio-gas
+                    @Html.RadioButtonFor(model => model.RenewableEnergy, "Bio")
+                    Mini-hydraulish
+                    @Html.RadioButtonFor(model => model.RenewableEnergy, "Hydro")
+
+                </div>
+                <span asp-validation-for="RenewableEnergy" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="IntegrationType" class="control-label">Art der Integration :</label>
+                <div class="form-control-options">
+
+                    Zusätzlich
+                    @Html.RadioButtonFor(model => model.IntegrationType, "Added")
+                    Integriert
+                    @Html.RadioButtonFor(model => model.IntegrationType, "Integrated")
+                </div>
+            </div>
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="PVCellsType" class="control-label">Solarzellentyp :</label>
+                <div class="form-control-options">
+                    <label class="container">
+                        Polykristallines
+                        @Html.RadioButtonFor(model => model.PVCellsType, "Polykristallines")
+                    </label>
+                    <label class="container">
+                        Monokristallin
+                        @Html.RadioButtonFor(model => model.PVCellsType, "Monokristallin")
+                    </label>
+                    <span asp-validation-for="PVCellsType" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="orientation" class="tabcontent" style="display : none">
+        <div class="col">
+
+
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="OrientationFieldType" class="control-label">Feldausrichtung (Azimut) '[°]' :</label>
+                <input asp-for="OrientationFieldType" class="form-control" />
+                <span asp-validation-for="OrientationFieldType" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="RoofSlopeType" class="control-label">Neigung des Daches '[°]' :</label>
+                <input asp-for="RoofSlopeType" class="form-control" />
+                <span asp-validation-for="RoofSlopeType" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="surface" class="tabcontent" style="display : none">
+        <div class="col">
+
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="Length" class="control-label">Länge '[m]':</label>
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display : flex; flex-direction : row">
+                <label asp-for="Width" class="control-label">Breite '[m]':</label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display : flex; flex-direction : row">
+                @*<label asp-for="Area" class="control-label">Oberfläche '[m2]':</label>*@
+                <label class="control-label">Oberfläche '[m2]':</label>
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div class="fleshButtons">
+    <button name="buttonLeft" class="buttonLeft" id="buttonLeft" onclick="clickPrevious(event);" style="display: none">
+        <img src="~/Images/LeftArrow_button.png" alt="Back" class="buttonImage" />
+    </button>
+    <button name="buttonRight" class="buttonRight" id="buttonRight" onclick="clickNext(event);" style="display: block">
+        <img src="~/Images/RightArrow_button.png" alt="Next" class="buttonImage" />
+    </button>
+    <button name="buttonSave" class="buttonSave" id="buttonSave" type="submit" onclick="submit" form="createPrivateInstallation" style="display: none">
+        <img src="~/Images/Button_save.png" alt="Save" class="buttonImage" />
+    </button>
+
+</div>
+
+    
