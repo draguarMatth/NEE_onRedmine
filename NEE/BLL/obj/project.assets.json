@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.dll": {}
+        }
+      },
+      "DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTO.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DAL/1.0.0": {
+      "type": "project",
+      "path": "../DAL/DAL.csproj",
+      "msbuildProject": "../DAL/DAL.csproj"
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "path": "../ConsoleApp1/DTO.csproj",
+      "msbuildProject": "../ConsoleApp1/DTO.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "DAL >= 1.0.0",
+      "DTO >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Draguar\\.nuget\\packages\\": {}
@@ -33,7 +68,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Cours\\7eme semestre\\625_1_Software\\Software Industrialisation\\Projets\\GitRepo_NEE\\Working_Code_NEE\\NEE_onRedmine\\NEE\\ConsoleApp1\\DTO.csproj": {
+              "projectPath": "D:\\Cours\\7eme semestre\\625_1_Software\\Software Industrialisation\\Projets\\GitRepo_NEE\\Working_Code_NEE\\NEE_onRedmine\\NEE\\ConsoleApp1\\DTO.csproj"
+            },
+            "D:\\Cours\\7eme semestre\\625_1_Software\\Software Industrialisation\\Projets\\GitRepo_NEE\\Working_Code_NEE\\NEE_onRedmine\\NEE\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\Cours\\7eme semestre\\625_1_Software\\Software Industrialisation\\Projets\\GitRepo_NEE\\Working_Code_NEE\\NEE_onRedmine\\NEE\\DAL\\DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
