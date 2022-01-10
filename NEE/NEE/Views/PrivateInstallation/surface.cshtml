@@ -1,0 +1,63 @@
+﻿@model NEE.Models.SolarEnergyViewModel
+
+@{
+    ViewData["Title"] = "surface";
+}
+
+<h1>surface</h1>
+
+<h4>SolarEnergyViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="surface">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IntegrationType" class="control-label"></label>
+                <input asp-for="IntegrationType" class="form-control" />
+                <span asp-validation-for="IntegrationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PVCellsType" class="control-label"></label>
+                <input asp-for="PVCellsType" class="form-control" />
+                <span asp-validation-for="PVCellsType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrientationFieldType" class="control-label"></label>
+                <input asp-for="OrientationFieldType" class="form-control" />
+                <span asp-validation-for="OrientationFieldType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoofSlopeType" class="control-label"></label>
+                <input asp-for="RoofSlopeType" class="form-control" />
+                <span asp-validation-for="RoofSlopeType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Width" class="control-label"></label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
