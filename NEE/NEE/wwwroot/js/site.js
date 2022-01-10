@@ -2,9 +2,6 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 
-<<<<<<< HEAD
-function openTab(evt, cityName) {
-=======
 
 const tabNames = ['localisation', 'type', 'orientation', 'surface'];
 
@@ -19,7 +16,6 @@ let lastPage = totPages - 1;
 let currentPage;
 
 function initdisplaying() {
->>>>>>> Feature_Debug
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -29,10 +25,6 @@ function initdisplaying() {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-<<<<<<< HEAD
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-=======
 }
 
 function clickNext(evt) {
@@ -65,7 +57,6 @@ function clickPrevious(evt) {
 
     if (previousPage > lastPage) {
         currentPage = lastPage;
-
     }
 
     currentPage = previousPage - 1;
@@ -149,5 +140,4 @@ function hideButton(id) {
 
 function saveFunction() {
     console.log("All data is saved");
->>>>>>> Feature_Debug
 }

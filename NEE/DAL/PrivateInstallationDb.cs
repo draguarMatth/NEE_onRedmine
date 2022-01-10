@@ -1,10 +1,8 @@
-﻿using DTO;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace DAL
 {
@@ -18,9 +16,17 @@ namespace DAL
             Configuration = configuration;
         }
 
-        public PrivateInstallation postMyInfo()
+        public PrivateInstallationDb()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public bool postMyInfo(List<Object> dataList)
+        {
+
+            File.WriteAllText("../NEE/Properties/data.json", JsonConvert.SerializeObject(dataList, Formatting.Indented));
+
+            return true;
         }
     }
 }
