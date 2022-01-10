@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL;
-using DTO;
+
 
 namespace BLL
 {
@@ -12,6 +9,6 @@ namespace BLL
     {
         IPrivateInstallationDb PrivateInstallationDb {get;}
 
-        PrivateInstallation postMyInfo();
+        bool postMyInfo(List<Object> dataList);
     }
 }

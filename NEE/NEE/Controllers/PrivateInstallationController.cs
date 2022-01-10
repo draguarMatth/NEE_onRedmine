@@ -2,18 +2,47 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using NEE.Models;
+using BLL;
 
 namespace NEE.Controllers
 {
     public class PrivateInstallationController : Controller
     {
         // GET: PrivateInstallationController
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
+        // Post: PrivateInstallationController
+        [HttpPost]
+        public ActionResult Index(PrivateInstallationViewModel pivm)
+        {
+            List<Object> dataList = new List<Object>();
+            dataList.Add(pivm.Postleitzahl);
+            dataList.Add(pivm.Stadt);
+            dataList.Add(pivm.Strasse);
+            dataList.Add(pivm.No);
+            dataList.Add(pivm.OrientationFieldType);
+            dataList.Add(pivm.RoofSlopeType);
+            dataList.Add(pivm.Length);
+            dataList.Add(pivm.Width);
+            dataList.Add(pivm.Area);
+            dataList.Add(pivm.PVCellsType);
+            dataList.Add(pivm.RenewableEnergy);
+            dataList.Add(pivm.IntegrationType);
+
+            PrivateInstallationManager pim = new PrivateInstallationManager();
+
+            bool result;            
+            result = pim.postMyInfo(dataList);
+
+
+            return RedirectToAction("Index","Home");
+        }
+
 
         // GET: PrivateInstallationController/Details/5
         public ActionResult Details(int id)

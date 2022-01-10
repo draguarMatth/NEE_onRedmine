@@ -57,7 +57,6 @@ function clickPrevious(evt) {
 
     if (previousPage > lastPage) {
         currentPage = lastPage;
-
     }
 
     currentPage = previousPage - 1;

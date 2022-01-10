@@ -1,7 +1,7 @@
 ﻿@model PrivateInstallationViewModel
 
 @{
-    ViewBag.Title = "Home page";
+    ViewBag.Title = "PrivateInstallation page";
 }
 
 
@@ -9,7 +9,8 @@
     <h1 class="display-4">Meine private Installation eingeben</h1>
 </div>
 <div class="top-navigation-menu">
-    <p class="top-navigation-menu">Home / Private Installation</p>
+    <!--<p class="top-navigation-menu">Home / Private Installation</p>-->
+    <a href="/Home/Index">Home > PrivateInstallation</a>
 </div>
 
 <body>
@@ -21,46 +22,43 @@
     </div>
 </body>
 
-<div id="localisation" class="tabcontent">
-    <div class="col">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div id="localisation" class="tabcontent">
+<form asp-controller="PrivateInstallation" asp-action="Index" method="post" id="createPrivateInstallation">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <div class="row">
-                    <div class="form-group" style="display : flex; flex-direction : row">
-                        <label asp-for="Strasse" class="control-label" style="margin-right : 30px"></label>
-                        <input asp-for="Strasse" class="form-control" />
-                        <span asp-validation-for="Strasse" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="display : flex; flex-direction : row">
-                        <label asp-for="No" class="control-label"></label>
-                        <input asp-for="No" class="form-control" />
-                        <span asp-validation-for="No" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group" style="display : flex; flex-direction : row">
-                        <label asp-for="Postleitzahl" class="control-label"></label>
-                        <input asp-for="Postleitzahl" class="form-control" />
-                        <span asp-validation-for="Postleitzahl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="display : flex; flex-direction : row">
-                        <label asp-for="Stadt" class="control-label"></label>
-                        <input asp-for="Stadt" class="form-control" />
-                        <span asp-validation-for="Stadt" class="text-danger"></span>
-                    </div>
-                </div>
+    <div id="localisation" class="tabcontent">
+        <div class="col">
 
-        </form>
+
+            <div class="row">
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Strasse" class="control-label" style="margin-right : 30px"></label>
+                    <input asp-for="Strasse" class="form-control" />
+                    <span asp-validation-for="Strasse" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="No" class="control-label"></label>
+                    <input asp-for="No" class="form-control" />
+                    <span asp-validation-for="No" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Postleitzahl" class="control-label"></label>
+                    <input asp-for="Postleitzahl" class="form-control" />
+                    <span asp-validation-for="Postleitzahl" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display : flex; flex-direction : row">
+                    <label asp-for="Stadt" class="control-label"></label>
+                    <input asp-for="Stadt" class="form-control" />
+                    <span asp-validation-for="Stadt" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 
-<div id="type" class="tabcontent" style="display : none">
-    <div class="col">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+    <div id="type" class="tabcontent" style="display : none">
+        <div class="col">
             <div class="form-group" style="display : flex; flex-direction : row">
                 <label asp-for="RenewableEnergy" class="control-label">Erneurbaren Energien : </label>
                 <div class="form-control-options">
@@ -92,26 +90,22 @@
                 <div class="form-control-options">
                     <label class="container">
                         Polykristallines
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
+                        @Html.RadioButtonFor(model => model.PVCellsType, "Polykristallines")
                     </label>
                     <label class="container">
                         Monokristallin
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
+                        @Html.RadioButtonFor(model => model.PVCellsType, "Monokristallin")
                     </label>
                     <span asp-validation-for="PVCellsType" class="text-danger"></span>
                 </div>
             </div>
-        </form>
+
+        </div>
     </div>
-</div>
 
-<div id="orientation" class="tabcontent" style="display : none">
-    <div class="col">
+    <div id="orientation" class="tabcontent" style="display : none">
+        <div class="col">
 
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group" style="display : flex; flex-direction : row">
                 <label asp-for="OrientationFieldType" class="control-label">Feldausrichtung (Azimut) '[°]' :</label>
@@ -124,15 +118,12 @@
                 <span asp-validation-for="RoofSlopeType" class="text-danger"></span>
             </div>
 
-        </form>
-
+        </div>
     </div>
-</div>
 
-<div id="surface" class="tabcontent" style="display : none">
-    <div class="col">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="surface" class="tabcontent" style="display : none">
+        <div class="col">
+
             <div class="form-group" style="display : flex; flex-direction : row">
                 <label asp-for="Length" class="control-label">Länge '[m]':</label>
                 <input asp-for="Length" class="form-control" />
@@ -144,27 +135,27 @@
                 <span asp-validation-for="Width" class="text-danger"></span>
             </div>
             <div class="form-group" style="display : flex; flex-direction : row">
-                <label asp-for="Area" class="control-label">Oberfläche '[m2]':</label>
+                @*<label asp-for="Area" class="control-label">Oberfläche '[m2]':</label>*@
+                <label class="control-label">Oberfläche '[m2]':</label>
                 <input asp-for="Area" class="form-control" />
                 <span asp-validation-for="Area" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+        </div>
     </div>
-</div>
+</form>
 
-
-<div class="navButtons">
-    <button name="buttonLeft" id="buttonLeft" onclick="clickPrevious(event);" style="display: none">
+<div class="fleshButtons">
+    <button name="buttonLeft" class="buttonLeft" id="buttonLeft" onclick="clickPrevious(event);" style="display: none">
         <img src="~/Images/LeftArrow_button.png" alt="Back" class="buttonImage" />
     </button>
-    <button name="buttonRight" id="buttonRight" onclick="clickNext(event);" style="display: block">
+    <button name="buttonRight" class="buttonRight" id="buttonRight" onclick="clickNext(event);" style="display: block">
         <img src="~/Images/RightArrow_button.png" alt="Next" class="buttonImage" />
     </button>
-    <button name="buttonSave" value="ActionOne" id="buttonSave" onclick="saveFunction" style="display: none">
+    <button name="buttonSave" class="buttonSave" id="buttonSave" type="submit" onclick="submit" form="createPrivateInstallation" style="display: none">
         <img src="~/Images/Button_save.png" alt="Save" class="buttonImage" />
     </button>
 
 </div>
+
+    
