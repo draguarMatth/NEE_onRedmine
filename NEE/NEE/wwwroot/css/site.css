@@ -158,6 +158,36 @@ body {
     margin-left : 10px;
 }
 
+.fleshButtons {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto;
+    width: 100%;
+}
+
+.buttonLeft {
+    width: 100px;
+    height: 80px;
+  
+}
+
+.buttonRight {
+    width: 100px;
+    height: 80px;
+   
+}
+
+.buttonSave {
+    width: 100px;
+    height: 80px;
+}
+
+.buttonImage {
+    width : 70px;
+    height: 70px;
+}
+
+
 
 
 

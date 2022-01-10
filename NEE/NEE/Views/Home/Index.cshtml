@@ -129,7 +129,6 @@
 
 <div id="surface" class="tabcontent" style="display : none">
     <div class="col">
-
         <form asp-action="View">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" style="display : flex; flex-direction : row">
@@ -152,4 +151,18 @@
             </div>
         </form>
     </div>
+</div>
+
+
+<div class="fleshButtons">
+    <button name="buttonLeft" id="buttonLeft" class="buttonLeft" onclick="clickPrevious(event);" style="display: none" >
+        <img src="~/Images/LeftArrow_button.png" alt="Back" class="buttonImage" />
+    </button>
+    <button name="buttonRight" id="buttonRight" class="buttonRight" onclick="clickNext(event);" style="display: block">
+        <img src="~/Images/RightArrow_button.png" alt="Next" class="buttonImage" />
+    </button>
+    <button name="buttonSave" value="ActionOne" id="buttonSave" class="buttonSave" onclick="saveFunction" style="display: none" >
+        <img src="~/Images/Button_save.png" alt="Save" class="buttonImage" />
+    </button>
+
 </div>
